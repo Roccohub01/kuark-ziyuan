@@ -1,6 +1,7 @@
 # 资源分类目录
 
 # **资源持续更新中~ WX: Azzxc01   QQ群：**
+# **此处不再进行更新维护，如需更多资源请+V**
 
 <p align="center"><img src="诺鸭.png" width="150"/></p>
 
