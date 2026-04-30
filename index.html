@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夸克资源导航 - 每日更新精选资源</title>
+<meta name="description" content="海量精选学习资源，AI、短视频、教育、商业等分类，夸克网盘一键转存，每日更新">
+<meta name="keywords" content="夸克资源,学习资源,网盘,教程,AI,短视频,课程">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-primary:#0f0f1a;--bg-secondary:#1a1a2e;--bg-card:#16213e;--bg-card-hover:#1a2744;
+  --accent:#6c5ce7;--accent-light:#a29bfe;--accent-glow:rgba(108,92,231,.3);
+  --quark-blue:#0984e3;--quark-blue-hover:#74b9ff;
+  --text-primary:#e8e8f0;--text-secondary:#9ca3af;--text-dim:#6b7280;
+  --border:rgba(255,255,255,.06);--radius:12px;
+  --cat-ai:#e84393;--cat-video:#fd79a8;--cat-health:#00b894;--cat-kids:#fdcb6e;
+  --cat-biz:#0984e3;--cat-psych:#6c5ce7;--cat-edu:#e17055;--cat-life:#00cec9;
+  --cat-shop:#fab1a0;--cat-work:#a29bfe;--cat-lang:#55efc4;--cat-book:#ffeaa7;
+  --cat-music:#ff7675;--cat-other:#636e72;
+}
+body{background:var(--bg-primary);color:var(--text-primary);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#0f0f1a 0%,#1a1a2e 50%,#16213e 100%);padding:40px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(108,92,231,.08) 0%,transparent 50%),radial-gradient(circle at 70% 50%,rgba(9,132,227,.08) 0%,transparent 50%);animation:heroGlow 8s ease-in-out infinite alternate}
+@keyframes heroGlow{0%{transform:translate(0,0)}100%{transform:translate(2%,2%)}}
+.hero-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.logo{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;border:3px solid var(--accent);box-shadow:0 0 20px var(--accent-glow);object-fit:cover;display:block;background:var(--bg-card)}
+.hero h1{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--accent-light),var(--quark-blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.hero .subtitle{color:var(--text-secondary);font-size:.9rem;margin-bottom:6px}
+.hero .contact{color:var(--accent-light);font-size:.85rem;margin-bottom:20px}
+.hero .contact a{color:var(--quark-blue-hover);transition:color .2s}
+.hero .contact a:hover{color:#fff}
+.search-box{position:relative;max-width:500px;margin:0 auto}
+.search-box input{width:100%;padding:14px 20px 14px 48px;border:1px solid var(--border);border-radius:50px;background:var(--bg-secondary);color:var(--text-primary);font-size:1rem;outline:none;transition:all .3s}
+.search-box input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.search-box input::placeholder{color:var(--text-dim)}
+.search-box .icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:1.1rem}
+.stats{display:flex;justify-content:center;gap:30px;margin-top:20px;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-num{font-size:1.5rem;font-weight:700;color:var(--accent-light)}
+.stat-label{font-size:.75rem;color:var(--text-dim)}
+
+/* Categories */
+.categories{max-width:1200px;margin:0 auto;padding:20px 20px 0;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.cat-btn{padding:8px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);font-size:.85rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.cat-btn:hover{border-color:var(--accent);color:var(--text-primary)}
+.cat-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Main */
+.main{max-width:1200px;margin:0 auto;padding:20px}
+
+/* Date sections */
+.date-section{margin-bottom:32px}
+.date-header{font-size:1.1rem;font-weight:600;color:var(--text-primary);padding:10px 0 12px;border-bottom:1px solid var(--border);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.date-header .badge{font-size:.7rem;padding:2px 10px;border-radius:10px;background:var(--accent-glow);color:var(--accent-light);font-weight:400}
+
+/* Resource cards grid */
+.resources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.resource-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;align-items:center;gap:14px;transition:all .25s;cursor:default}
+.resource-card:hover{background:var(--bg-card-hover);border-color:rgba(108,92,231,.3);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.resource-card .cat-tag{flex-shrink:0;padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:500;color:#fff;white-space:nowrap}
+.resource-card .info{flex:1;min-width:0}
+.resource-card .name{font-size:.9rem;color:var(--text-primary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4}
+.resource-card .link-btn{flex-shrink:0;padding:8px 16px;border-radius:8px;background:linear-gradient(135deg,var(--quark-blue),#6c5ce7);color:#fff;font-size:.8rem;font-weight:500;transition:all .2s;white-space:nowrap}
+.resource-card .link-btn:hover{opacity:.85;transform:scale(1.03)}
+
+/* Empty state */
+.empty-state{text-align:center;padding:60px 20px;color:var(--text-dim)}
+.empty-state .icon{font-size:3rem;margin-bottom:12px}
+.empty-state p{font-size:1rem}
+
+/* Footer */
+.footer{text-align:center;padding:30px 20px;color:var(--text-dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:40px}
+.footer a{color:var(--accent-light)}
+
+/* Tutorial banner */
+.tutorial-banner{max-width:1200px;margin:20px auto 0;padding:16px 24px;background:linear-gradient(135deg,rgba(108,92,231,.12),rgba(9,132,227,.12));border:1px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tutorial-banner .t-icon{font-size:1.5rem}
+.tutorial-banner .t-text{flex:1;font-size:.9rem;color:var(--text-secondary)}
+.tutorial-banner .t-text strong{color:var(--text-primary)}
+.tutorial-banner .t-link{padding:8px 20px;border-radius:8px;background:var(--accent);color:#fff;font-size:.85rem;transition:all .2s}
+.tutorial-banner .t-link:hover{opacity:.85}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-primary)}
+::-webkit-scrollbar-thumb{background:var(--bg-secondary);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+/* Mobile */
+@media(max-width:600px){
+  .hero h1{font-size:1.5rem}
+  .resources-grid{grid-template-columns:1fr}
+  .resource-card{padding:12px}
+  .stats{gap:20px}
+  .tutorial-banner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <img src="诺鸭.png" alt="Logo" class="logo">
+    <h1>夸克资源导航</h1>
+    <p class="subtitle">海量精选学习资源 | 每日更新 | 一键转存</p>
+    <p class="contact">WX: Azzxc01 | 教程: <a href="https://www.notion.so/FAQ-3523604fa2f78083a262f2a34b7e98d7?pvs=21" target="_blank" rel="noopener">基础教程</a></p>
+    <div class="search-box">
+      <span class="icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="搜索资源名称，按 Ctrl+F 快速查找...">
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<div class="tutorial-banner">
+  <span class="t-icon">&#128218;</span>
+  <span class="t-text"><strong>新手必看</strong> - 不知道怎么保存资源？查看基础教程，手把手教你转存网盘</span>
+  <a href="https://www.notion.so/FAQ-3523604fa2f78083a262f2a34b7e98d7?pvs=21" target="_blank" class="t-link" rel="noopener">查看教程</a>
+</div>
+
+<nav class="categories" id="categories"></nav>
+
+<main class="main" id="main"></main>
+
+<footer class="footer">
+  <p>资源持续更新中 | 数据来源均来自网络公开分享，仅供学习交流</p>
+  <p style="margin-top:4px">WX: Azzxc01</p>
+</footer>
+
+<script>
+const DATA=[
+// 2026-04-30
+{d:"2026-04-30",n:"SketchUp全能室内设计师养成班",u:"https://pan.quark.cn/s/18d55c06ab38",c:"教育/课程"},
+{d:"2026-04-30",n:"1400多套农村自建房 别墅图纸",u:"https://pan.quark.cn/s/19dc16e5d4a9",c:"生活/休闲"},
+{d:"2026-04-30",n:"中艺网校·零基础学摄影+航拍",u:"https://pan.quark.cn/s/cffcfb47c6e6",c:"教育/课程"},
+{d:"2026-04-30",n:"曾仕强最全合集",u:"https://pan.quark.cn/s/9d343531e37e",c:"读书/听书"},
+{d:"2026-04-30",n:"Paul Graham 2006-2023 精选文集",u:"https://pan.quark.cn/s/0119f822f79f",c:"读书/听书"},
+{d:"2026-04-30",n:"小白思维破圈《互联网赚钱的底层逻辑》",u:"https://pan.quark.cn/s/9bc6b16daef3",c:"电商/创业"},
+{d:"2026-04-30",n:"上百套圣诞节PPT",u:"https://pan.quark.cn/s/ca71b394060b",c:"职场/技能"},
+{d:"2026-04-30",n:"推荐·8部绝境逃生类型的电影",u:"https://pan.quark.cn/s/2bb804a557b1",c:"音乐/影视"},
+{d:"2026-04-30",n:"电视直播",u:"https://pan.quark.cn/s/dbbeedc29bc7",c:"生活/休闲"},
+{d:"2026-04-30",n:"简历模板系列",u:"https://pan.quark.cn/s/d9148f2a41d0",c:"职场/技能"},
+{d:"2026-04-30",n:"1~12年级数学尖子生高分题库",u:"https://pan.quark.cn/s/8c4206009652",c:"教育/课程"},
+{d:"2026-04-30",n:"马馺·怎样用AI做PPT（商业演讲策划人）",u:"https://pan.quark.cn/s/12d02a4fc554",c:"AI/人工智能"},
+
+// 2026-04-29
+{d:"2026-04-29",n:"慕课网实战课-畅销3年的Python分布式爬虫课程",u:"https://pan.quark.cn/s/487c0851d9fd",c:"职场/技能"},
+{d:"2026-04-29",n:"怎样拍女朋友（52568）",u:"https://pan.quark.cn/s/5e05285d8201",c:"教育/课程"},
+{d:"2026-04-29",n:"叔贵×谷传玲 易瘦饮食养成课（完结）",u:"https://pan.quark.cn/s/fad7df1127f8",c:"健身/健康"},
+{d:"2026-04-29",n:"如何让你的产品疯狂自增长",u:"https://pan.quark.cn/s/7ef609bd6494",c:"商业/管理"},
+{d:"2026-04-29",n:"韩国最出色的十一部R限制【39.7GB】",u:"https://pan.quark.cn/s/316627b65adc",c:"音乐/影视"},
+{d:"2026-04-29",n:"托福冲110高端旗舰版全套课程",u:"https://pan.quark.cn/s/c9bcab3ed612",c:"英语/外语"},
+{d:"2026-04-29",n:"德云社相声2020-2024",u:"https://pan.quark.cn/s/e47bb8f3ee81",c:"音乐/影视"},
+{d:"2026-04-29",n:"超实用婚姻经营课，解决90%的家庭问题",u:"https://pan.quark.cn/s/9d4d471c4ecc",c:"心理/成长"},
+{d:"2026-04-29",n:"英语口语系统学习班",u:"https://pan.quark.cn/s/e2d8d0cf8e4e",c:"英语/外语"},
+{d:"2026-04-29",n:"风水·算命系列课程9合集（14.4GB）",u:"https://pan.quark.cn/s/bbed4ab848fa",c:"其他"},
+{d:"2026-04-29",n:"PhotoShop从零基础小白到大神",u:"https://pan.quark.cn/s/a736f7c89c3b",c:"职场/技能"},
+{d:"2026-04-29",n:"少儿动画课 学霸高效阅读方法",u:"https://pan.quark.cn/s/a9224506c262",c:"儿童/幼儿"},
+{d:"2026-04-29",n:"马士兵教育·严选商城",u:"https://pan.quark.cn/s/4a3e583ce58f",c:"职场/技能"},
+
+// 2026-04-28
+{d:"2026-04-28",n:"日语零基础-N1全套学习资源",u:"https://pan.quark.cn/s/99271be09e35",c:"英语/外语"},
+{d:"2026-04-28",n:"剪辑师宝典",u:"https://pan.quark.cn/s/514c7b7acf06",c:"短视频/直播"},
+{d:"2026-04-28",n:"全国进货渠道大全",u:"https://pan.quark.cn/s/b235618f2b90",c:"电商/创业"},
+{d:"2026-04-28",n:"超效率指南：如何掌控你的时间和未来",u:"https://pan.quark.cn/s/0beb5f74b84c",c:"心理/成长"},
+{d:"2026-04-28",n:"古妆汉服仙服零基础美妆教学课",u:"https://pan.quark.cn/s/120ebeea9265",c:"生活/休闲"},
+{d:"2026-04-28",n:"做LOL陪玩 月入3w+ 边玩游戏边收钱",u:"https://pan.quark.cn/s/450738ce0217",c:"电商/创业"},
+{d:"2026-04-28",n:"玩赚ChatGPT",u:"https://pan.quark.cn/s/dea8c227a73a",c:"AI/人工智能"},
+{d:"2026-04-28",n:"豆瓣2023年度最佳图书",u:"https://pan.quark.cn/s/339e3afbbdf9",c:"读书/听书"},
+{d:"2026-04-28",n:"学而思初中22-23年全套资料（227.8GB）",u:"https://pan.quark.cn/s/62021da0ff42",c:"教育/课程"},
+{d:"2026-04-28",n:"各类付费PPT合集【精整分类，下载即用！】",u:"https://pan.quark.cn/s/893d5ea6d2cd",c:"职场/技能"},
+{d:"2026-04-28",n:"卓克·怎样用AI高效学习（科技观察家）",u:"https://pan.quark.cn/s/129f017eba00",c:"AI/人工智能"},
+{d:"2026-04-28",n:"300+套分类电子手账笔记模板",u:"https://pan.quark.cn/s/19200053981b",c:"生活/休闲"},
+
+// 2026-04-27
+{d:"2026-04-27",n:"禽暴科长·实用家居风水课程",u:"https://pan.quark.cn/s/5b48a95bc35b",c:"其他"},
+{d:"2026-04-27",n:"最新精整上千款实用软件专题【88.2GB】",u:"https://pan.quark.cn/s/c007a8e5c385",c:"职场/技能"},
+{d:"2026-04-27",n:"颈椎保养课-保重身体要紧",u:"https://pan.quark.cn/s/f403d659673e",c:"健身/健康"},
+{d:"2026-04-27",n:"简历模版",u:"https://pan.quark.cn/s/617e472df913",c:"职场/技能"},
+{d:"2026-04-27",n:"千锋教育Python教程_700集零基础入门到精通",u:"https://pan.quark.cn/s/372172a4111c",c:"职场/技能"},
+{d:"2026-04-27",n:"王力宏线上唱歌教程",u:"https://pan.quark.cn/s/13bed0305fef",c:"音乐/影视"},
+{d:"2026-04-27",n:"从小学到高中全学科思维导图",u:"https://pan.quark.cn/s/c1d232ef662c",c:"教育/课程"},
+{d:"2026-04-27",n:"400套付费套装书，价值上万！",u:"https://pan.quark.cn/s/ebfec28d05ea",c:"读书/听书"},
+{d:"2026-04-27",n:"小肩膀·一站式安卓逆向安全",u:"https://pan.quark.cn/s/905828e722d2",c:"职场/技能"},
+{d:"2026-04-27",n:"英语兔英语词汇音标发音学习",u:"https://pan.quark.cn/s/ee56c8115f9e",c:"英语/外语"},
+{d:"2026-04-27",n:"互联网人AI化转型实操能力课",u:"https://pan.quark.cn/s/b375a00689dd",c:"AI/人工智能"},
+{d:"2026-04-27",n:"现代女性冥想瑜伽课",u:"https://pan.quark.cn/s/6eb7ff439302",c:"健身/健康"},
+{d:"2026-04-27",n:"琳子博士-强大心态自信营（13节完结）",u:"https://pan.quark.cn/s/f07fd618a104",c:"心理/成长"},
+{d:"2026-04-27",n:"一个月记忆20000单词+象形记忆+词根词缀",u:"https://pan.quark.cn/s/57e199b62a98",c:"英语/外语"},
+{d:"2026-04-27",n:"公众号流量主之旅游赛道",u:"https://pan.quark.cn/s/3c5c80d9084a",c:"电商/创业"},
+{d:"2026-04-27",n:"柏翔-华为业绩持续成长的顶层设计",u:"https://pan.quark.cn/s/169805437836",c:"商业/管理"},
+{d:"2026-04-27",n:"高客单IP课，搞定成交翻倍变现",u:"https://pan.quark.cn/s/e5f83cef2c32",c:"电商/创业"},
+{d:"2026-04-27",n:"Linux性能分析之CPU实战",u:"https://pan.quark.cn/s/201f5067f139",c:"职场/技能"},
+{d:"2026-04-27",n:"剪辑拍摄特效全能创作课",u:"https://pan.quark.cn/s/b6a1096dc3d8",c:"短视频/直播"},
+
+// 2026-04-26
+{d:"2026-04-26",n:"剪映电脑版0基础到进阶",u:"https://pan.quark.cn/s/c0267deac7ed",c:"短视频/直播"},
+{d:"2026-04-26",n:"AI自媒体起号课程，0基础小白两周学会",u:"https://pan.quark.cn/s/b474a5a1692a",c:"AI/人工智能"},
+{d:"2026-04-26",n:"瓦斯讲故事2025全新影视解说课程",u:"https://pan.quark.cn/s/55ce3f63ca72",c:"短视频/直播"},
+{d:"2026-04-26",n:"趣味动画轻松学汉字，幼小衔接必备识字课",u:"https://pan.quark.cn/s/103cfa8212a3",c:"儿童/幼儿"},
+{d:"2026-04-26",n:"职业遛狗师全能训练课",u:"https://pan.quark.cn/s/4e694b8ac16f",c:"生活/休闲"},
+{d:"2026-04-26",n:"双色球中奖分析与擒号秘技全图解",u:"https://pan.quark.cn/s/e5087aae972e",c:"其他"},
+{d:"2026-04-26",n:"用手机拍摄专业级视频短片 全套视频课程",u:"https://pan.quark.cn/s/4a137de86550",c:"短视频/直播"},
+{d:"2026-04-26",n:"微信小程序教程",u:"https://pan.quark.cn/s/7a0e73e9dd26",c:"职场/技能"},
+{d:"2026-04-26",n:"黄冈小状元系列教辅汇总",u:"https://pan.quark.cn/s/a97eb5b2a906",c:"教育/课程"},
+{d:"2026-04-26",n:"Python深度学习验证码识别全集",u:"https://pan.quark.cn/s/e0e22a640e69",c:"AI/人工智能"},
+{d:"2026-04-26",n:"美甲教程",u:"https://pan.quark.cn/s/1331ff794fb6",c:"生活/休闲"},
+{d:"2026-04-26",n:"500个民间怪闻故事",u:"https://pan.quark.cn/s/6fd6fa32f6be",c:"读书/听书"},
+{d:"2026-04-26",n:"2023车载U盘，无损高音质Mp3格式【41GB】",u:"https://pan.quark.cn/s/92708c9c8b9a",c:"音乐/影视"},
+
+// 2026-04-25
+{d:"2026-04-25",n:"Vegas交易技术项目：普通人成为黄金操盘手的实战之路",u:"https://pan.quark.cn/s/87154beffafd",c:"电商/创业"},
+{d:"2026-04-25",n:"新媒体运营高薪升核培养计划",u:"https://pan.quark.cn/s/50e94cedcdf5",c:"电商/创业"},
+{d:"2026-04-25",n:"AIGC数字人商业落地实操课",u:"https://pan.quark.cn/s/80c83d3bd162",c:"AI/人工智能"},
+{d:"2026-04-25",n:"绝版男生恋爱书籍：撩道1-5系列",u:"https://pan.quark.cn/s/29130845b955",c:"心理/成长"},
+{d:"2026-04-25",n:"旧连环画报",u:"https://pan.quark.cn/s/81b82dbe7a65",c:"读书/听书"},
+{d:"2026-04-25",n:"亚马逊原版电子书合集（2500册）",u:"https://pan.quark.cn/s/470fd996fb9a",c:"读书/听书"},
+{d:"2026-04-25",n:"掌阅精品出版书籍（3600册）",u:"https://pan.quark.cn/s/f001c536c3cc",c:"读书/听书"},
+{d:"2026-04-25",n:"500份心理学方面书籍资料合集",u:"https://pan.quark.cn/s/d59dcd2fe3ee",c:"心理/成长"},
+{d:"2026-04-25",n:"尚硅谷·在线支付开发（带源码课件）",u:"https://pan.quark.cn/s/4eb0ef170e20",c:"职场/技能"},
+{d:"2026-04-25",n:"橙啦·宝爷万词班 22000词汇速记营",u:"https://pan.quark.cn/s/afdb13bbdab0",c:"英语/外语"},
+{d:"2026-04-25",n:"CIA绝密思维工具：助你迅速从月入5K到年入100W",u:"https://pan.quark.cn/s/fa87edba460a",c:"心理/成长"},
+{d:"2026-04-25",n:"自由职业摄影师 PLUS（咔图）价值3298",u:"https://pan.quark.cn/s/2b846aaa617c",c:"教育/课程"},
+
+// AI/人工智能 分类资源
+{d:"",n:"小红书电商特训班，开店选品+爆款笔记+AI提效",u:"https://pan.quark.cn/s/433d54f388d3",c:"AI/人工智能"},
+{d:"",n:"Coze专题课：零基础入门学AI",u:"https://pan.quark.cn/s/90a0169d8738",c:"AI/人工智能"},
+{d:"",n:"AI课程创作效率指南，打造可持续变现产品线",u:"https://pan.quark.cn/s/531d7c85ec1a",c:"AI/人工智能"},
+{d:"",n:"AI自媒体爆文创作全域创作解析职场领域篇",u:"https://pan.quark.cn/s/82a475f45f1c",c:"AI/人工智能"},
+{d:"",n:"AI绘画大师班 Midjourney入门到精通",u:"https://pan.quark.cn/s/84abdbfa6be1",c:"AI/人工智能"},
+{d:"",n:"100条精选AI智能体短视频带货训练营",u:"https://pan.quark.cn/s/8bd2d7b83d4d",c:"AI/人工智能"},
+{d:"",n:"AI智能体实战课程，0基础跨越AI鸿沟",u:"https://pan.quark.cn/s/9d0691382250",c:"AI/人工智能"},
+{d:"",n:"AI办公实战课，AI助力工作学习效率提升N倍",u:"https://pan.quark.cn/s/a5cbf37b760e",c:"AI/人工智能"},
+{d:"",n:"零基础学AI+短视频全能课",u:"https://pan.quark.cn/s/fa9a52c044b1",c:"AI/人工智能"},
+{d:"",n:"AI职场应用必修课",u:"https://pan.quark.cn/s/a369c193178d",c:"AI/人工智能"},
+{d:"",n:"AI+IP流量顶级方法论",u:"https://pan.quark.cn/s/7bea608a2596",c:"AI/人工智能"},
+{d:"",n:"OpenClaw部署极简教程",u:"https://pan.quark.cn/s/3f53d955d620",c:"AI/人工智能"},
+{d:"",n:"Coze零基础开发Agent智能体",u:"https://pan.quark.cn/s/9cafcb23518d",c:"AI/人工智能"},
+{d:"",n:"零基础玩转即梦AI，爆款视频创作秘籍",u:"https://pan.quark.cn/s/25fff5543eb8",c:"AI/人工智能"},
+{d:"",n:"AI文案创作与AI视频制作实战课",u:"https://pan.quark.cn/s/81631a55570c",c:"AI/人工智能"},
+{d:"",n:"新手小白如何通过即梦可灵玩转AI短视频",u:"https://pan.quark.cn/s/e3ca79eeaa66",c:"AI/人工智能"},
+{d:"",n:"AI智能体应用入门教程",u:"https://pan.quark.cn/s/2e1aa2663de4",c:"AI/人工智能"},
+{d:"",n:"AI实战兵法，从工具驾驭到战略布局",u:"https://pan.quark.cn/s/877d84702473",c:"AI/人工智能"},
+{d:"",n:"豆包AI实战营：小白到高手速成",u:"https://pan.quark.cn/s/8d3af4864fda",c:"AI/人工智能"},
+{d:"",n:"全网最全OpenClaw龙虾AI资源（含安装包+教程）",u:"https://pan.quark.cn/s/b294195ffbc7",c:"AI/人工智能"},
+{d:"",n:"央视力荐AI提效手册【豆包·即梦·剪映·飞书·扣子5合1】",u:"https://pan.quark.cn/s/f58142b84080",c:"AI/人工智能"},
+{d:"",n:"AI数字人变现课程",u:"https://pan.quark.cn/s/9dd147acbf35",c:"AI/人工智能"},
+{d:"",n:"2026年最火AI视频模型 Seedance 2.0 学习资料包",u:"https://pan.quark.cn/s/66666579d8f7",c:"AI/人工智能"},
+{d:"",n:"老照片修复上色+图片高清处理+AI视频教学课程",u:"https://pan.quark.cn/s/e94be75bdff0",c:"AI/人工智能"},
+{d:"",n:"AI音乐人入门课",u:"https://pan.quark.cn/s/0242b3e7d8a1",c:"AI/人工智能"},
+
+// 短视频/直播 分类资源
+{d:"",n:"AE+Pr高能秘籍课",u:"https://pan.quark.cn/s/dc7d73144a21",c:"短视频/直播"},
+{d:"",n:"从零到一的视频剪辑系统课",u:"https://pan.quark.cn/s/0d18b32cc910",c:"短视频/直播"},
+{d:"",n:"剪映视频剪辑从小白到大师（电脑版）",u:"https://pan.quark.cn/s/ea7fdf4d848c",c:"短视频/直播"},
+{d:"",n:"抖音热门BGM 音乐合集汇总",u:"https://pan.quark.cn/s/bdc9b312aeb6",c:"短视频/直播"},
+{d:"",n:"488集零基础英语口语（抖音爆火）",u:"https://pan.quark.cn/s/0d174699b02a",c:"短视频/直播"},
+{d:"",n:"UI设计师入门指南全套课程",u:"https://pan.quark.cn/s/4e44e44f5581",c:"短视频/直播"},
+{d:"",n:"高清虚拟直播间搭建技术教程",u:"https://pan.quark.cn/s/bfe1067c2eef",c:"短视频/直播"},
+{d:"",n:"快手抖音小程序短剧合集",u:"https://pan.quark.cn/s/c2edd0d64f1e",c:"短视频/直播"},
+{d:"",n:"60款国潮古风背景（视频素材）",u:"https://pan.quark.cn/s/b864666557b3",c:"短视频/直播"},
+{d:"",n:"B站精品课：PR+AU+AE全能剪辑师入门班",u:"https://pan.quark.cn/s/dbf44bab6436",c:"短视频/直播"},
+{d:"",n:"李兴兴：剪辑实战训练营（完结）",u:"https://pan.quark.cn/s/30d424fe54be",c:"短视频/直播"},
+{d:"",n:"颈椎保养课 保重身体要紧",u:"https://pan.quark.cn/s/5e659f522025",c:"短视频/直播"},
+{d:"",n:"每日英语小短文100篇（附带文本+音频+视频）",u:"https://pan.quark.cn/s/2362f1e7781b",c:"短视频/直播"},
+{d:"",n:"PR剪辑技巧进阶课",u:"https://pan.quark.cn/s/7d1f5d4ebc80",c:"短视频/直播"},
+{d:"",n:"AE超级修炼指南",u:"https://pan.quark.cn/s/635d788ca2bb",c:"短视频/直播"},
+{d:"",n:"李涛AE CC高高手",u:"https://pan.quark.cn/s/bfabbb345159",c:"短视频/直播"},
+{d:"",n:"小白0基础入门短剧剪辑运营培训班",u:"https://pan.quark.cn/s/069e6acf9fc2",c:"短视频/直播"},
+{d:"",n:"抖音大乘活法赛道实操教学",u:"https://pan.quark.cn/s/4c596b0e77f9",c:"短视频/直播"},
+{d:"",n:"短视频直播间如何布光教程",u:"https://pan.quark.cn/s/1eb609532b55",c:"短视频/直播"},
+{d:"",n:"视频号直播间单品爆破玩法攻略",u:"https://pan.quark.cn/s/d8bd514c4829",c:"短视频/直播"},
+{d:"",n:"Pr速成3小时学会视频剪辑",u:"https://pan.quark.cn/s/479674d669e9",c:"短视频/直播"},
+
+// 健身/健康 分类资源
+{d:"",n:"帕梅拉燃脂全集",u:"https://pan.quark.cn/s/b28424f6a3ff",c:"健身/健康"},
+{d:"",n:"中华传统健身功法合集",u:"https://pan.quark.cn/s/d949129580d5",c:"健身/健康"},
+{d:"",n:"男女通用零基础减脂塑性课",u:"https://pan.quark.cn/s/89cb1cccfa60",c:"健身/健康"},
+
+// 儿童/幼儿 分类资源
+{d:"",n:"儿童绘本1000本",u:"https://pan.quark.cn/s/969afccdfd1a",c:"儿童/幼儿"},
+{d:"",n:"学而思写作技巧宝典（小学作文）",u:"https://pan.quark.cn/s/82668b5958c5",c:"儿童/幼儿"},
+
+// 商业/管理 分类资源
+{d:"",n:"巴菲特投资哲学领教营",u:"https://pan.quark.cn/s/4f9271ebbbde",c:"商业/管理"},
+{d:"",n:"郝伟臣 华为基本法",u:"https://pan.quark.cn/s/e999ec65b02c",c:"商业/管理"},
+{d:"",n:"祝登甲-华为十年HR教你改进组织氛围",u:"https://pan.quark.cn/s/6c194b35a1b8",c:"商业/管理"},
+{d:"",n:"祁生胜 华为绩效管理、绩效考核",u:"https://pan.quark.cn/s/cde98d19eba5",c:"商业/管理"},
+{d:"",n:"宝洪江-解读华为干部管理之道",u:"https://pan.quark.cn/s/78596591cac1",c:"商业/管理"},
+{d:"",n:"全球商业简史30讲（完结）",u:"https://pan.quark.cn/s/89f5bf80e719",c:"商业/管理"},
+{d:"",n:"量见·EMBA大课",u:"https://pan.quark.cn/s/e2ff433d6b91",c:"商业/管理"},
+{d:"",n:"哈佛商业评论人的10节思维训练课",u:"https://pan.quark.cn/s/6b85562eadec",c:"商业/管理"},
+{d:"",n:"老板必懂的税务实操逻辑",u:"https://pan.quark.cn/s/260901dea953",c:"商业/管理"},
+
+// 心理/成长 分类资源
+{d:"",n:"人生三见心性成长课",u:"https://pan.quark.cn/s/d69aefd02155",c:"心理/成长"},
+{d:"",n:"吕老师·生涯规划课",u:"https://pan.quark.cn/s/5a0dc9cfed77",c:"心理/成长"},
+{d:"",n:"大侠老师·人人都需要的人性底层驾驭术",u:"https://pan.quark.cn/s/a10a387f450e",c:"心理/成长"},
+{d:"",n:"闺蜜都不会分享给你的情商真相",u:"https://pan.quark.cn/s/088329cba871",c:"心理/成长"},
+{d:"",n:"李越 如何提高情商",u:"https://pan.quark.cn/s/b996b5a5bc12",c:"心理/成长"},
+{d:"",n:"张沛超：中国人的心理治疗音频20讲",u:"https://pan.quark.cn/s/4271c255a040",c:"心理/成长"},
+{d:"",n:"李忠莹：人生的15项缺失",u:"https://pan.quark.cn/s/389a2553259d",c:"心理/成长"},
+
+// 教育/课程 分类资源
+{d:"",n:"小学初中数学和奥数资料",u:"https://pan.quark.cn/s/e99f8f03fb68",c:"教育/课程"},
+{d:"",n:"学而思系列教辅汇总【4.03GB】",u:"https://pan.quark.cn/s/1d3cb9ae43c0",c:"教育/课程"},
+{d:"",n:"幼儿学前教辅资料专题【7.43GB】",u:"https://pan.quark.cn/s/7df095d634af",c:"教育/课程"},
+{d:"",n:"茶艺课程全套",u:"https://pan.quark.cn/s/09585d6071c5",c:"教育/课程"},
+{d:"",n:"Oracle数据库工程师入门培训实战",u:"https://pan.quark.cn/s/d27b7ff4cdbb",c:"教育/课程"},
+{d:"",n:"人像摄影美姿系统学习课程",u:"https://pan.quark.cn/s/e3ded0b08588",c:"教育/课程"},
+{d:"",n:"零基础系统学习网络安全教程100讲",u:"https://pan.quark.cn/s/d6a5f8b10e2d",c:"教育/课程"},
+{d:"",n:"SPSS数据分析零基础实战课程（完结）",u:"https://pan.quark.cn/s/a4fa72c48aeb",c:"教育/课程"},
+{d:"",n:"全网最全Cursor Meetup分享会资料",u:"https://pan.quark.cn/s/46fdf6d16850",c:"教育/课程"},
+{d:"",n:"PS全套插件库合集（证件照+人像修图等）",u:"https://pan.quark.cn/s/50e54c9e9943",c:"教育/课程"},
+{d:"",n:"全国导游证考试课程资料（稀有）",u:"https://pan.quark.cn/s/7d9ac7bfaf15",c:"教育/课程"},
+{d:"",n:"2026初级护师资料包",u:"https://pan.quark.cn/s/4cdbe2f4deb1",c:"教育/课程"},
+{d:"",n:"衡水中学资料大全（小学 初中 高中）",u:"https://pan.quark.cn/s/cef679d9a547",c:"教育/课程"},
+
+// 电商/创业 分类资源
+{d:"",n:"创业必备手册资料大全",u:"https://pan.quark.cn/s/df79f8866fc5",c:"电商/创业"},
+{d:"",n:"亚马逊站内运营课",u:"https://pan.quark.cn/s/79a3f4b69197",c:"电商/创业"},
+{d:"",n:"Ps电商海报设计教程【7.82GB】",u:"https://pan.quark.cn/s/4fcf725451b3",c:"电商/创业"},
+{d:"",n:"手把手教你同城短视频直播",u:"https://pan.quark.cn/s/5f2f0fc8b901",c:"电商/创业"},
+{d:"",n:"小红书涨粉+变现硬核干货系统课",u:"https://pan.quark.cn/s/313ebac72101",c:"电商/创业"},
+{d:"",n:"抖音流量认知课",u:"https://pan.quark.cn/s/257d88a4184d",c:"电商/创业"},
+{d:"",n:"36个小而美的赚钱金点子",u:"https://pan.quark.cn/s/96cf36b6098d",c:"电商/创业"},
+{d:"",n:"方案：创业计划书（110个）",u:"https://pan.quark.cn/s/4001c02059f6",c:"电商/创业"},
+{d:"",n:"5G短视频抖音实操变现课程",u:"https://pan.quark.cn/s/ceeb3f89bcc2",c:"电商/创业"},
+{d:"",n:"TikTok跨境电商全流程实操课",u:"https://pan.quark.cn/s/f9860f20804a",c:"电商/创业"},
+{d:"",n:"一个人起盘的底层逻辑",u:"https://pan.quark.cn/s/d01b0371060b",c:"电商/创业"},
+{d:"",n:"抖音小店全流程实操课",u:"https://pan.quark.cn/s/ee115d98fc74",c:"电商/创业"},
+{d:"",n:"Tiktok达人管理从入门到精通",u:"https://pan.quark.cn/s/49043c3936de",c:"电商/创业"},
+{d:"",n:"暖石《知乎带货变现训练营》",u:"https://pan.quark.cn/s/f39e2dc1e96f",c:"电商/创业"},
+{d:"",n:"50岁前赚到1000万，银行行长教你赚钱方法",u:"https://pan.quark.cn/s/eb4fb8fe8b4a",c:"电商/创业"},
+
+// 职场/技能 分类资源
+{d:"",n:"大厂Java面试300题",u:"https://pan.quark.cn/s/1e3570e4c0f5",c:"职场/技能"},
+{d:"",n:"职场生存指南：拆解52个职场难题",u:"https://pan.quark.cn/s/7e9437fcf151",c:"职场/技能"},
+{d:"",n:"用搜索提升收入，掌握最热门的职场技能",u:"https://pan.quark.cn/s/c45557169ed3",c:"职场/技能"},
+{d:"",n:"花了2万多买的Python教程全套",u:"https://pan.quark.cn/s/aad1b21d9e8d",c:"职场/技能"},
+{d:"",n:"互联网校招面试笔试题合集",u:"https://pan.quark.cn/s/fadb56ceb75f",c:"职场/技能"},
+{d:"",n:"Linkedin高阶实战，外贸业务开发",u:"https://pan.quark.cn/s/b20d8e2ac086",c:"职场/技能"},
+
+// 英语/外语 分类资源
+{d:"",n:"英语单词记忆方法总汇（小学至大学）",u:"https://pan.quark.cn/s/01b9c765435b",c:"英语/外语"},
+{d:"",n:"雪梨老师自然拼读音标课语法课新概念全套【80GB】",u:"https://pan.quark.cn/s/115f48f75d05",c:"英语/外语"},
+{d:"",n:"学好英语让你月入50w（完结）",u:"https://pan.quark.cn/s/897692c265fd",c:"英语/外语"},
+{d:"",n:"6个月零基础学会英语",u:"https://pan.quark.cn/s/bc505c34105a",c:"英语/外语"},
+{d:"",n:"IELTS新东方在线雅思备考大礼包",u:"https://pan.quark.cn/s/252ea5e32a64",c:"英语/外语"},
+{d:"",n:"人教版高中英语全套学习资料",u:"https://pan.quark.cn/s/603ecb96f871",c:"英语/外语"},
+{d:"",n:"零基础英语语法",u:"https://pan.quark.cn/s/5a15680b69c2",c:"英语/外语"},
+{d:"",n:"颉斌斌考研英语",u:"https://pan.quark.cn/s/37b9be15f0ea",c:"英语/外语"},
+
+// 读书/听书 分类资源
+{d:"",n:"故事会2023年全集",u:"https://pan.quark.cn/s/d9a03137812f",c:"读书/听书"},
+{d:"",n:"40部央视荐读书单",u:"https://pan.quark.cn/s/cc2c9190bf75",c:"读书/听书"},
+{d:"",n:"微信读书榜单（精整分类）",u:"https://pan.quark.cn/s/04603eeb3ff6",c:"读书/听书"},
+{d:"",n:"2025微信读书热门榜单（精整分类）",u:"https://pan.quark.cn/s/a4bb3015d590",c:"读书/听书"},
+
+// 音乐/影视 分类资源
+{d:"",n:"车载HIFI音乐靓碟【89.3GB】",u:"https://pan.quark.cn/s/cd3b12ee7be5",c:"音乐/影视"},
+{d:"",n:"音效素材——726个宏伟震撼电影大鼓声背景音乐",u:"https://pan.quark.cn/s/15ae15f51a5b",c:"音乐/影视"},
+{d:"",n:"1000首电影解说背景音乐",u:"https://pan.quark.cn/s/348b689246a5",c:"音乐/影视"},
+{d:"",n:"影视飓风：用iPhone拍出电影感",u:"https://pan.quark.cn/s/529416f8eb35",c:"音乐/影视"},
+{d:"",n:"迪士尼系列动画139部蓝光珍藏版",u:"https://pan.quark.cn/s/cb2c72b5c9e6",c:"音乐/影视"},
+
+// 生活/休闲 分类资源
+{d:"",n:"五一假期旅游攻略旅行社内部版",u:"https://pan.quark.cn/s/5162f1d7d3d7",c:"生活/休闲"},
+
+// 其他 分类资源
+{d:"",n:"董宇辉全套",u:"https://pan.quark.cn/s/6241047420f7",c:"其他"},
+{d:"",n:"权志龙 BigBang",u:"https://pan.quark.cn/s/c2ea5d09934a",c:"其他"},
+{d:"",n:"米小圈全系列",u:"https://pan.quark.cn/s/5776307471b4",c:"其他"},
+{d:"",n:"关键对话20讲-如何成为沟通高手",u:"https://pan.quark.cn/s/3c61b48af15b",c:"其他"},
+{d:"",n:"推理、恐怖、悬疑类小说合集",u:"https://pan.quark.cn/s/a49980abb226",c:"其他"},
+{d:"",n:"2020-2025豆瓣年度书籍合集",u:"https://pan.quark.cn/s/3c03083bd5f2",c:"其他"},
+{d:"",n:"香港大学推荐的50本书籍",u:"https://pan.quark.cn/s/c85273b69c37",c:"其他"},
+{d:"",n:"可商用字体合集【19.1G】",u:"https://pan.quark.cn/s/32140d892013",c:"其他"},
+{d:"",n:"Office技能提升",u:"https://pan.quark.cn/s/a1f03f89780e",c:"其他"},
+{d:"",n:"360部爽文短剧大合集（连播版）",u:"https://pan.quark.cn/s/4d433de0f0cc",c:"其他"},
+{d:"",n:"付费群流出！得到专题164GB",u:"https://pan.quark.cn/s/04a0934d1a99",c:"其他"},
+{d:"",n:"网易云评论超10W+歌曲合集896首",u:"https://pan.quark.cn/s/201d268c2f4a",c:"其他"},
+{d:"",n:"725本世界名著(英汉双语)",u:"https://pan.quark.cn/s/bcead68a879a",c:"其他"},
+];
+
+const CAT_COLORS={"AI/人工智能":"var(--cat-ai)","短视频/直播":"var(--cat-video)","健身/健康":"var(--cat-health)","儿童/幼儿":"var(--cat-kids)","商业/管理":"var(--cat-biz)","心理/成长":"var(--cat-psych)","教育/课程":"var(--cat-edu)","生活/休闲":"var(--cat-life)","电商/创业":"var(--cat-shop)","职场/技能":"var(--cat-work)","英语/外语":"var(--cat-lang)","读书/听书":"var(--cat-book)","音乐/影视":"var(--cat-music)","其他":"var(--cat-other)"};
+
+let currentCat="全部",searchTerm="";
+
+function getCategories(){
+  const s=new Set();DATA.forEach(r=>{if(r.c)s.add(r.c)});return["全部",...Array.from(s)];
+}
+
+function init(){
+  // Stats
+  const cats=new Set(DATA.map(r=>r.c));
+  const dates=[...new Set(DATA.map(r=>r.d).filter(Boolean))].sort().reverse();
+  document.getElementById("stats").innerHTML=`
+    <div class="stat-item"><div class="stat-num">${DATA.length}</div><div class="stat-label">资源总数</div></div>
+    <div class="stat-item"><div class="stat-num">${cats.size}</div><div class="stat-label">分类</div></div>
+    <div class="stat-item"><div class="stat-num">${dates.length}</div><div class="stat-label">更新天数</div></div>
+  `;
+  // Categories
+  const catEl=document.getElementById("categories");
+  catEl.innerHTML=getCategories().map(c=>`<button class="cat-btn${c===currentCat?' active':''}" data-cat="${c}">${c}</button>`).join("");
+  catEl.addEventListener("click",e=>{const b=e.target.closest(".cat-btn");if(!b)return;currentCat=b.dataset.cat;catEl.querySelectorAll(".cat-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()});
+  // Search
+  document.getElementById("searchInput").addEventListener("input",e=>{searchTerm=e.target.value.trim().toLowerCase();render()});
+  render();
+}
+
+function getFiltered(){
+  let list=DATA;
+  if(currentCat!=="全部")list=list.filter(r=>r.c===currentCat);
+  if(searchTerm)list=list.filter(r=>r.n.toLowerCase().includes(searchTerm)||r.c.toLowerCase().includes(searchTerm));
+  return list;
+}
+
+function render(){
+  const list=getFiltered();
+  const main=document.getElementById("main");
+  if(!list.length){main.innerHTML='<div class="empty-state"><div class="icon">&#128533;</div><p>没有找到匹配的资源，换个关键词试试</p></div>';return}
+  // Group by date
+  const dated=list.filter(r=>r.d);
+  const undated=list.filter(r=>!r.d);
+  const groups={};
+  dated.forEach(r=>{if(!groups[r.d])groups[r.d]=[];groups[r.d].push(r)});
+  if(undated.length)groups["分类精选"]=undated;
+  const sortedKeys=Object.keys(groups).sort((a,b)=>{
+    if(a==="分类精选")return 1;if(b==="分类精选")return -1;
+    return b.localeCompare(a);
+  });
+  let html="";
+  sortedKeys.forEach(date=>{
+    const items=groups[date];
+    html+=`<section class="date-section"><div class="date-header">${date==="分类精选"?'&#127775; 分类精选':'&#128197; '+date}<span class="badge">${items.length} 项</span></div><div class="resources-grid">`;
+    items.forEach(r=>{
+      const color=CAT_COLORS[r.c]||"var(--cat-other)";
+      html+=`<div class="resource-card"><span class="cat-tag" style="background:${color}">${r.c}</span><div class="info"><div class="name">${escHtml(r.n)}</div></div><a href="${r.u}" target="_blank" rel="noopener" class="link-btn">夸克网盘</a></div>`;
+    });
+    html+=`</div></section>`;
+  });
+  main.innerHTML=html;
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+document.addEventListener("DOMContentLoaded",init);
+</script>
+</body>
+</html>
