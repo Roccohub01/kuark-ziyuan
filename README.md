@@ -2,7 +2,7 @@
 
 # **资源持续更新中~ WX: Azzxc01   QQ群：**
 
-![诺鸭](诺鸭.png)
+<p align="center"><img src="诺鸭.png" width="150"/></p>
 
 ### **基础教程**：[https://www.notion.so/FAQ-3523604fa2f78083a262f2a34b7e98d7?source=copy_link](https://www.notion.so/FAQ-3523604fa2f78083a262f2a34b7e98d7?pvs=21)
 
