@@ -1,8 +1,29 @@
-# 资源分类目录
-
-# **资源持续更新中~ WX: Azzxc01   QQ群：**
-
 <p align="center"><img src="诺鸭.png" width="150"/></p>
+
+<h1 align="center">夸克网盘资源库 - 免费学习资源分享</h1>
+
+<p align="center">
+<b>AI课程 | 短视频剪辑 | 健身教程 | 英语学习 | 编程开发 | 电商创业 | 职场技能 | 电子书 | 影视音乐</b>
+<br><br>
+资源持续更新中 ~ 每日新增优质内容
+<br>
+联系微信: Azzxc01 ｜ QQ群
+</p>
+
+<p align="center">
+<a href="#ai人工智能">AI/人工智能</a> ·
+<a href="#短视频直播">短视频</a> ·
+<a href="#健身健康">健身</a> ·
+<a href="#教育课程">教育</a> ·
+<a href="#职场技能">职场</a> ·
+<a href="#英语外语">英语</a> ·
+<a href="#电商创业">电商</a> ·
+<a href="#读书听书">读书</a> ·
+<a href="#音乐影视">影视</a> ·
+<a href="#其他">更多</a>
+</p>
+
+---
 
 ### **基础教程**：[https://www.notion.so/FAQ-3523604fa2f78083a262f2a34b7e98d7?source=copy_link](https://www.notion.so/FAQ-3523604fa2f78083a262f2a34b7e98d7?pvs=21)
 
